@@ -15,30 +15,32 @@ This project is a Django web application that implements the Vigenère cipher, a
 The project is organized as follows:
 
 vigenere_cipher/
-    ├── cypher_app/
-    │   ├── migrations/
-    │   ├── static/
-    │   │   └── cypher_app/
-    │   │       └── style.css
-    │   ├── templates/
-    │   │   └── cypher_app/
-    │   │       └── index.html
-    │   ├── __init__.py
-    │   ├── admin.py
-    │   ├── apps.py
-    │   ├── models.py
-    │   ├── tests.py
-    │   ├── views.py
-    │   └── urls.py
-    ├── vigenere_cipher/
-    │   ├── __init__.py
-    │   ├── asgi.py
-    │   ├── settings.py
-    │   ├── urls.py
-    │   └── wsgi.py
-    ├── manage.py
-    ├── db.sqlite3  # SQLite database file
-    └── README.md
+├── cypher_app/
+│ ├── migrations/
+│ ├── static/
+│ │ └── cypher_app/
+│ │ └── style.css
+│ ├── templates/
+│ │ └── cypher_app/
+│ │ └── index.html
+│ ├── init.py
+│ ├── admin.py
+│ ├── apps.py
+│ ├── models.py
+│ ├── tests.py
+│ ├── views.py
+│ └── urls.py
+├── vigenere_cipher/
+│ ├── init.py
+│ ├── asgi.py
+│ ├── settings.py
+│ ├── urls.py
+│ └── wsgi.py
+├── manage.py
+├── db.sqlite3 
+└── README.md
+
+
 
 ## Installation
 
