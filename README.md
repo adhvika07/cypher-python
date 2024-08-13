@@ -14,6 +14,7 @@ This project is a Django web application that implements the Vigenère cipher, a
 
 The project is organized as follows:
 
+'''
 vigenere_cipher/
 ├── cypher_app/
 │ ├── migrations/
@@ -40,7 +41,7 @@ vigenere_cipher/
 ├── db.sqlite3 
 └── README.md
 
-
+'''
 
 ## Installation
 
