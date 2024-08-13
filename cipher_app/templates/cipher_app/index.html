@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigenère Cipher</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'cipher_app/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Vigenère Cipher</h1>
+
+        <form id="cipherForm">
+            <div class="form-group">
+                <label for="message">Enter text:</label>
+                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="key">Enter custom key:</label>
+                <input type="text" class="form-control" id="key" name="key">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="radio" id="encrypt" name="action" value="encrypt" checked> Encrypt
+                </label>
+                <label>
+                    <input type="radio" id="decrypt" name="action" value="decrypt"> Decrypt
+                </label>
+            </div>
+
+            <button type="button" class="btn-btn-success-btn-block" onclick="processCipher()"><strong>Submit</strong></button>
+        </form>
+
+        <div id="output" class="result d-none">
+            <h2>Result:</h2>
+            <p id="resultText"></p>
+        </div>
+
+        <div id="error" class="error d-none">
+            <p id="errorText"></p>
+        </div>
+    </div>
+
+    <script>
+        function processCipher() {
+            const message = document.getElementById('message').value;
+            const key = document.getElementById('key').value;
+            const action = document.querySelector('input[name="action"]:checked').value;
+
+            fetch('/process/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({
+                    message: message,
+                    key: key,
+                    action: action
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('errorText').innerText = data.error;
+                    document.getElementById('error').classList.remove('d-none');
+                    document.getElementById('output').classList.add('d-none');
+                } else {
+                    document.getElementById('resultText').innerText = data.result;
+                    document.getElementById('output').classList.remove('d-none');
+                    document.getElementById('error').classList.add('d-none');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
