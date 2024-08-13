@@ -47,28 +47,29 @@ vigenere_cipher/
 
 1. **Clone the Repository:**
 
+```
    git clone https://github.com/adhvika07/vigenere_cipher.git
    cd vigenere_cipher
+```
    
 2. **Set up a Virtual Environment:**
-
+```
    python -m venv venv
    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-
+```
 
 3. **Install Requirements:**
-
+```
    pip install -r requirements.txt
-
+```
 4. **Apply Migrations:**
-
+```
    python manage.py migrate
-
+```
 5. **Run Development Server:**
-
+```
    python manage.py runserver
-
-
+```
 ## Usage
 
 1. **Navigate to the Application:**
